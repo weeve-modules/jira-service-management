@@ -1,50 +1,78 @@
-displayName: 'Module Boilerplate'       # Display name for the module that will be displayed in the UI.
-moduleName: 'module-boilerplate'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
-description: 'This is module boilerplate description.'       # Module description that will be displayed in the UI.
-versionName: 'v1.0.0'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
-isPublic: true                          # Boolean value that indicates if the module is Public or Private.
-categories:                             # Array of category that will be used to group the module in the UI.
-  - 'CATEGORY_1'
-  - 'CATEGORY_2'
-type: 'Output'      # Module type (Input, Processing, Output) that will be used to group the module in the UI.
+displayName: 'Jira Service Management'
+moduleName: 'jira-service-management'
+description: 'Generate Service Requests in Jira Service Management.'
+versionName: 'v1.0.0'
+isPublic: true
+categories:
+  - 'Alert'
+type: 'Output'
 image:
-  name: 'weevenetwork/module-boilerplate'     # Image name from the docker registry.
-  tag: 'latest'                               # Image tag from the docker registry.
-  homepage: 'https://hub.docker.com/weevenetwork/module-boilerplate'      # Image homepage from the docker registry.
-repository: 'https://github.com/weeve-modules/python-output-module-boilerplate'     # Repository URL to source code.
-envs:                                   # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
-  - name: Setting 1                   # name of the field to be displayed on the UI.
-    key: ENVIRONMENT_1                # key to set in the environment variables.
-    description: Module setting 1     # Description/helper text for the field.
-    value: ''                         # Value to be set in the environment variables.
-    type: 'select'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
-    options:                          # Options for the field if it is a select or multiple select. An array of string options
-      - option_A
-      - option_B
-      - option_C
-    dependencies: []                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
-  - name: Setting 2
-    key: ENVIRONMENT_2
-    description: Module setting 2
-    value: ''
-    type: 'number'
+  name: 'weevenetwork/jira-service-management'
+  tag: 'v1.0.0'
+  homepage: 'https://hub.docker.com/r/weevenetwork/jira-service-management'
+repository: 'https://github.com/weeve-modules/jira-service-management'
+envs:
+  - name: Atlassian Domain
+    key: ATLASSIAN_DOMAIN
+    description: Your Atlassian domain of Jira Service Management.
+    value: 'https://your-domain.atlassian.net'
+    type: 'text'
     options: []
-    dependencies:
-      - key: ENVIRONMENT_1              # key of the dependency
-        value: option_B                 # value of the dependency
-ports:                                  # Array of ports that will be exposed by the module.
-  - container: 8080                     # Port number from the container.
-    host: 8080                          # Port number to map on the host.
+    dependencies: []
+  - name: Atlassian Email
+    key: ATLASSIAN_EMAIL
+    description: Atlassian account email of the Request Reporter.
+    value: 'john.blue@invalid.com'
+    type: 'text'
+    options: []
+    dependencies: []
+  - name: Atlassian API Token
+    key: ATLASSIAN_API_TOKEN
+    description: Atlassian account API token of the Request Reporter.
+    value: 'api-token-1234'
+    type: 'text'
+    options: []
+    dependencies: []
+  - name: Service Desk ID
+    key: SERVICE_DESK_ID
+    description: Service desk ID to which the Request is send.
+    value: '1'
+    type: 'text'
+    options: []
+    dependencies: []
+  - name: Request Type ID
+    key: REQUEST_TYPE_ID
+    description: Request type ID of the Request.
+    value: '33'
+    type: 'text'
+    options: []
+    dependencies: []
+  - name: Summary Label
+    key: SUMMARY_LABEL
+    description: Label in incoming data that holds the Summary text of the Jira Service Request ticket.
+    value: 'ticket-summary'
+    type: 'text'
+    options: []
+    dependencies: []
+  - name: Description Label
+    key: DESCRIPTION_LABEL
+    description: Label in incoming data that holds the Description text of the Jira Service Request ticket.
+    value: 'ticket-description-label'
+    type: 'text'
+    options: []
+    dependencies: []
+ports: []
 envPorts: []
-mounts:
-  - container: '/data'                  # Mount path from the container.
-    host: '/data'                       # Mount path to map on the host.
+mounts: []
 envMounts: []
 devices: []
 envDevices: []
 tags:                                   # Array of tags.
   - 'Python'
   - 'Output'
-  - 'Boilerplate'
-  - '1.0.0'
-icon: 'https://some.url/to/icon.png'    # Icon URL that will be displayed in the UI.
+  - 'Jira'
+  - 'Desk'
+  - 'Request'
+  - 'Service'
+  - 'Management'
+icon: 'https://icons-020-demo.s3.eu-central-1.amazonaws.com/mi_jira_service_management_output.png'    # Icon URL that will be displayed in the UI.

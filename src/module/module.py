@@ -4,10 +4,21 @@ Data outputting should happen here.
 
 Edit this file to implement your module.
 """
-
+import requests
+import json
+import base64
+from os import getenv
 from logging import getLogger
 
 log = getLogger("module")
+
+url = f"{getenv('ATLASSIAN_DOMAIN')}/rest/servicedeskapi/request"
+
+headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Basic " + base64.b64encode(f'{getenv("ATLASSIAN_EMAIL")}:{getenv("ATLASSIAN_API_TOKEN")}'.encode("ascii")).decode("ascii"),
+}
 
 
 def module_main(received_data: any) -> str:
@@ -26,9 +37,26 @@ def module_main(received_data: any) -> str:
     log.debug("Outputting ...")
 
     try:
-        # YOUR CODE HERE
+        payload = json.dumps({
+            "serviceDeskId": getenv("SERVICE_DESK_ID"),
+            "requestTypeId": getenv("REQUEST_TYPE_ID"),
+            "requestFieldValues": {
+                "summary": received_data[getenv("SUMMARY_LABEL")],
+                "description": received_data[getenv("DESCRIPTION_LABEL")]
+            }
+        })
 
-        return None
+        resp = requests.request(
+            "POST",
+            url,
+            data=payload,
+            headers=headers
+        )
+
+        if resp.status_code == 201:
+            return None
+        else:
+            return resp.text
 
     except Exception as e:
         return f"Exception in the module business logic: {e}"
