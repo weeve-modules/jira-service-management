@@ -1,0 +1,50 @@
+displayName: 'Module Boilerplate'       # Display name for the module that will be displayed in the UI.
+moduleName: 'module-boilerplate'        # Module name that will be used to reference the module, and uniquely identify the module and their versions.
+description: 'This is module boilerplate description.'       # Module description that will be displayed in the UI.
+versionName: 'v1.0.0'                    # Module version name that will be used to reference the module version, and uniquely identify the module version with a common name.
+isPublic: true                          # Boolean value that indicates if the module is Public or Private.
+categories:                             # Array of category that will be used to group the module in the UI.
+  - 'CATEGORY_1'
+  - 'CATEGORY_2'
+type: 'Output'      # Module type (Input, Processing, Output) that will be used to group the module in the UI.
+image:
+  name: 'weevenetwork/module-boilerplate'     # Image name from the docker registry.
+  tag: 'latest'                               # Image tag from the docker registry.
+  homepage: 'https://hub.docker.com/weevenetwork/module-boilerplate'      # Image homepage from the docker registry.
+repository: 'https://github.com/weeve-modules/python-output-module-boilerplate'     # Repository URL to source code.
+envs:                                   # Array of environment variables that will be used to configure the module. Also used to show related fields on the UI.
+  - name: Setting 1                   # name of the field to be displayed on the UI.
+    key: ENVIRONMENT_1                # key to set in the environment variables.
+    description: Module setting 1     # Description/helper text for the field.
+    value: ''                         # Value to be set in the environment variables.
+    type: 'select'                    # Type of the field. Possible values are: ['text', 'select', 'boolean', 'date', 'time', 'dateTime-local', 'number', 'multiple', 'CSV', 'file']
+    options:                          # Options for the field if it is a select or multiple select. An array of string options
+      - option_A
+      - option_B
+      - option_C
+    dependencies: []                     # List of dependencies for the field. This field is only displayed if all the dependencies are met. If
+  - name: Setting 2
+    key: ENVIRONMENT_2
+    description: Module setting 2
+    value: ''
+    type: 'number'
+    options: []
+    dependencies:
+      - key: ENVIRONMENT_1              # key of the dependency
+        value: option_B                 # value of the dependency
+ports:                                  # Array of ports that will be exposed by the module.
+  - container: 8080                     # Port number from the container.
+    host: 8080                          # Port number to map on the host.
+envPorts: []
+mounts:
+  - container: '/data'                  # Mount path from the container.
+    host: '/data'                       # Mount path to map on the host.
+envMounts: []
+devices: []
+envDevices: []
+tags:                                   # Array of tags.
+  - 'Python'
+  - 'Output'
+  - 'Boilerplate'
+  - '1.0.0'
+icon: 'https://some.url/to/icon.png'    # Icon URL that will be displayed in the UI.

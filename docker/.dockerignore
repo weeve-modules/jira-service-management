@@ -1,0 +1,6 @@
+README.md
+makefile
+.vscode/
+.gitingore
+docker-compose.yml
+example.env

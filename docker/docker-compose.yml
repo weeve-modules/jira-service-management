@@ -1,0 +1,13 @@
+version: "3.0"
+services:
+  boilerplate:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    environment:
+      MODULE_NAME: "boilerplate"
+      MODULE_TYPE: "Output"
+      INGRESS_HOST: "0.0.0.0"
+      INGRESS_PORT: "80"
+    ports:
+      - 80:80
