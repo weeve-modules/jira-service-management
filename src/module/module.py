@@ -15,7 +15,6 @@ log = getLogger("module")
 url = f"{getenv('ATLASSIAN_DOMAIN')}/rest/servicedeskapi/request"
 
 headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
     "Authorization": "Basic " + base64.b64encode(f'{getenv("ATLASSIAN_EMAIL")}:{getenv("ATLASSIAN_API_TOKEN")}'.encode("ascii")).decode("ascii"),
 }
