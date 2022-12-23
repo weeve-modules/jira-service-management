@@ -27,7 +27,7 @@ def data_validation(data: any) -> str:
     try:
         # YOUR CODE HERE
 
-        allowed_data_types = [dict, list]
+        allowed_data_types = [dict]
 
         if not type(data) in allowed_data_types:
             return f"Detected type: {type(data)} | Supported types: {allowed_data_types} | invalid!"

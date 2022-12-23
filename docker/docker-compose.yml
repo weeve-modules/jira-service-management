@@ -1,13 +1,20 @@
 version: "3.0"
 services:
-  boilerplate:
+  jira-service-management:
     build:
       context: ../
       dockerfile: docker/Dockerfile
     environment:
-      MODULE_NAME: "boilerplate"
+      MODULE_NAME: "jira-service-management"
       MODULE_TYPE: "Output"
       INGRESS_HOST: "0.0.0.0"
       INGRESS_PORT: "80"
+      ATLASSIAN_DOMAIN: https://your-domain.atlassian.net
+      ATLASSIAN_EMAIL: john.blue@invalid.com
+      ATLASSIAN_API_TOKEN: api-token-1234
+      SERVICE_DESK_ID: 1
+      REQUEST_TYPE_ID: 33
+      SUMMARY_LABEL: "summary"
+      DESCRIPTION_LABEL: "description"
     ports:
       - 80:80
